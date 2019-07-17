@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>错误监控</title>
+</head>
+<body>
+<ul>
+   <li>
+       <h3>前端错误的分类</h3>
+       <ul>
+           <li>即时运行错误：代码错误</li>
+           <li>资源加载错误</li>
+       </ul>
+   </li>
+    <li>
+        <h3>错误的捕获方式</h3>
+        <ul>
+            <p>即时运行错误的捕获方式</p>
+            <li>try...catch</li>
+            <li>window.onerror</li>
+            <p>资源加载错误的捕获方式</p>
+            <li>object.onerror</li>
+            <li>performance.getEntries()</li>
+            <li>Error事件捕获</li>
+        </ul>
+        <h3>延伸：跨域的js运行错误可以捕获吗？错误提示什么？应该怎么处理？</h3>
+        <ul>
+            <li>在script标签增加  crossorigin 属性</li>
+            <li>设置js资源响应头Access-Control-Allow-Origin:*(或者域名)</li>
+        </ul>
+    </li>
+    <li>
+        <h3>上报错误的基本原理</h3>
+        <ul>
+            <li>采用Ajax同心的方式上报</li>
+            <li>利用Image对象上报（new Image().src = '上报路径'）</li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
