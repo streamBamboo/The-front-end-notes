@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+    function Promise (executor) {
+        this.data = undefined;
+        this.status = 'pending';
+        
+        this.onResolvedCallback = [];
+        this.onRejectedCallback = [];
+        
+        let resolve =  (data) => {
+            if (this.status === 'pending') {
+                this.status = 'resolved';
+                this.data = data;
+                
+                for (let i = 0; i < this.onResolvedCallback.length; i++) {
+                    this.onResolvedCallback[i](data);
+                }
+            }
+        };
+        
+        let reject =  (errReason) => {
+            if (this.status === 'pending') {
+                this.status = 'rejected';
+                this.data = errReason;
+                for (let i = 0; i < this.onRejectedCallback.length; i++) {
+                    this.onRejectedCallback[i](errReason);
+                }
+            }
+        };
+        
+        try {//执行时可能会发生异常
+            executor(resolve, reject);
+        } catch (e) {
+            reject(e);//promise失败了
+        }
+    }
+    
+   
+	
+
+</script>
+</body>
+</html>
